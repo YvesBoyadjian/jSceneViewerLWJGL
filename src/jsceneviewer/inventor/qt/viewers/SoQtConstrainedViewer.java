@@ -71,9 +71,9 @@ import jsceneviewer.inventor.qt.SoQtCameraController;
 public class SoQtConstrainedViewer extends SoQtFullViewer {
 
 
-	public SoQtConstrainedCameraController getCameraController() {
-		return (SoQtConstrainedCameraController)super.getCameraController();
-	}
+//	public SoQtConstrainedCameraController getCameraController() {
+//		return (SoQtConstrainedCameraController)super.getCameraController();
+//	}
 
     // Specifies the upward direction of the viewer. This up direction is
     // used by the viewers to constrain the camera when tilting up/down, and
@@ -89,7 +89,7 @@ public class SoQtConstrainedViewer extends SoQtFullViewer {
 	    // rotate the camera and check for constrain
 	    if (camera != null) {
 	        camera.orientation.setValue(rot.operator_mul( camera.orientation.getValue()));
-	        getCameraController().checkForCameraUpConstrain();
+	        ((SoQtConstrainedCameraController)getCameraController()).checkForCameraUpConstrain();
 	    }
 	}
 
@@ -105,7 +105,7 @@ public class SoQtConstrainedViewer extends SoQtFullViewer {
 
     // now check for constrains
     if (camera != null)
-    	getCameraController().checkForCameraUpConstrain();
+    	((SoQtConstrainedCameraController)getCameraController()).checkForCameraUpConstrain();
 }
 
 	public void    saveHomePositionSlot()
@@ -197,7 +197,9 @@ public class SoQtConstrainedViewer extends SoQtFullViewer {
 		    setBottomWheelTitle("Rotate");
 		    setLeftWheelTitle("Tilt");
 		    setRightWheelTitle("Dolly");
-		}
+
+	        cameraController.setSceneRoot(sceneRoot, 1);
+	}
 
 	
 	

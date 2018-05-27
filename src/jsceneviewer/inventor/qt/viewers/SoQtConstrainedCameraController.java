@@ -98,7 +98,7 @@ public abstract class SoQtConstrainedCameraController extends SoQtCameraControll
     // adjust the camera if necessary so that the new right vector
     // lies in a plane parallel to our old right vector
     final SbMatrix mx = new SbMatrix();
-    mx.copyFrom( camera.orientation.getValue());
+    mx.copyFrom( camera.orientation.getValue().getMatrix());
     final SbVec3f newForward = new SbVec3f(-mx.getValue()[2][0], -mx.getValue()[2][1], -mx.getValue()[2][2]);
     final SbVec3f newRight = new SbVec3f(mx.getValue()[0][0], mx.getValue()[0][1], mx.getValue()[0][2]);
 

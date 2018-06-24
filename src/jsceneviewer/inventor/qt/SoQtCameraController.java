@@ -1123,14 +1123,14 @@ public void startDrag(final SbVec2s pos)
 }
 
 
-protected void changeCameraValues(SoCamera newCamera)
+public void changeCameraValues(SoCamera newCamera)
 {
     if (camera == null) {
         return;
     }
 
     // only paste cameras of the same type
-    if (camera.getTypeId() != newCamera.getTypeId()) {
+    if (camera.getTypeId().operator_not_equal(newCamera.getTypeId())) {
         return;
     }
 

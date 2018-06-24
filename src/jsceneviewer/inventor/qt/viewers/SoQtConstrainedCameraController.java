@@ -65,14 +65,14 @@ public abstract class SoQtConstrainedCameraController extends SoQtCameraControll
     // This is called during a paste.
     // We redefine this to keep the right vector of the camera
     // in a parallel plane.
-	protected void        changeCameraValues(SoCamera newCamera)
+	public void        changeCameraValues(SoCamera newCamera)
 {
 	    SoCamera camera = getCamera(); // java port
 
     if (camera == null) { return; }
 
     // only paste cameras of the same type
-    if (camera.getTypeId() != newCamera.getTypeId()) {
+    if (camera.getTypeId().operator_not_equal(newCamera.getTypeId())) {
         return;
     }
 
